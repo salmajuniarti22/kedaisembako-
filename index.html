@@ -1,0 +1,112 @@
+@extends('layouts.app')
+
+@section('title', 'Katalog Sembako')
+
+@section('content')
+    <!-- Banner Utama -->
+    <div class="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white mb-10 shadow-xs flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+            <span class="bg-green-700/50 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Program</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 mb-2">Belanja Sembako Hemat & Mudah</h1>
+            <p class="text-green-100 max-w-xl">Penuhi kebutuhan dapur keluarga Anda dengan produk berkualitas langsung dari warung Salma.</p>
+        </div>
+        
+        <!-- Status Mitra -->
+        <div class="relative rounded-2xl overflow-hidden min-w-[240px] h-32 shadow-md group border border-white/20 flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
+                 alt="Stok Sembako Toko" 
+                 class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 backdrop-blur-[1px] flex flex-col justify-center items-center text-center p-4">
+                <span class="bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest mb-1 shadow-sm">
+                    <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> Mitra
+                </span>
+                <p class="text-xs uppercase text-gray-300 font-medium tracking-wide">Status Toko</p>
+                <p class="text-xl font-black text-white tracking-wide drop-shadow-md">KEDAI AKTIF</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kategori Utama -->
+    <div class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-6 bg-green-600 rounded-full"></span> Kategori Utama
+        </h2>
+        <div class="flex flex-wrap gap-3">
+            <a href="{{ url('/') }}" 
+               class="px-5 py-3 rounded-xl border text-center shadow-xs font-medium text-sm transition cursor-pointer 
+               {{ !$kategoriTerpilih ? 'bg-green-600 text-white border-green-600' : 'bg-white text-gray-700 border-gray-200 hover:border-green-500 hover:text-green-600' }}">
+                📦 Semua Produk
+            </a>
+
+            @foreach($daftarKategori as $kat)
+                @php
+                    $icon = '🛒';
+                    if (str_contains(strtolower($kat), 'beras') || str_contains(strtolower($kat), 'roti')) $icon = '🍞';
+                    elseif (str_contains(strtolower($kat), 'minyak')) $icon = '🍳';
+                    elseif (str_contains(strtolower($kat), 'gula')) $icon = '🍬';
+                    elseif (str_contains(strtolower($kat), 'mie') || str_contains(strtolower($kat), 'kopi')) $icon = '☕';
+                    elseif (str_contains(strtolower($kat), 'telur')) $icon = '🥚';
+                @endphp
+                
+                <a href="{{ url('/?kategori=' . urlencode($kat)) }}" 
+                   class="px-5 py-3 rounded-xl border text-center shadow-xs font-medium text-sm transition cursor-pointer 
+                   {{ $kategoriTerpilih === $kat ? 'bg-green-600 text-white border-green-600' : 'bg-white text-gray-700 border-gray-200 hover:border-green-500 hover:text-green-600' }}">
+                    {{ $icon }} {{ $kat }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Daftar Produk -->
+    <div class="mb-6" id="produk-section">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-6 bg-green-600 rounded-full"></span> 
+            {{ $kategoriTerpilih ? 'Menampilkan Kategori: ' . $kategoriTerpilih : 'Produk Tersedia' }}
+        </h2>
+        
+        @if($produks->isEmpty())
+            <div class="bg-white rounded-2xl border border-gray-200 p-12 text-center text-gray-500 shadow-xs">
+                <i class="fa-solid fa-box-open text-4xl mb-3 text-gray-300"></i>
+                <p class="font-medium">Maaf, produk untuk kategori ini belum tersedia.</p>
+            </div>
+        @else
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                @foreach($produks as $produk)
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition duration-300 flex flex-col">
+                    
+                    <div class="bg-gray-100 h-48 w-full flex items-center justify-center overflow-hidden relative">
+                        <img src="{{ $produk->gambar }}" alt="{{ $produk->nama_produk }}" class="object-cover w-full h-full transform hover:scale-105 transition duration-500">
+                        @if($produk->harga_diskon)
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Promo</span>
+                        @endif
+                    </div>
+
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">{{ $produk->kategori }}</span>
+                        <h3 class="font-bold text-gray-800 text-sm mt-1 line-clamp-2 h-10">{{ $produk->nama_produk }}</h3>
+                        
+                        <div class="mt-auto pt-3">
+                            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1">
+                                @if($produk->harga_diskon)
+                                    <span class="text-base font-extrabold text-green-600">Rp {{ number_format($produk->harga_diskon, 0, ',', '.') }}</span>
+                                    <span class="text-xs text-gray-400 line-through">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
+                                @else
+                                    <span class="text-base font-extrabold text-green-600">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
+                                @endif
+                            </div>
+                            
+                            <form action="{{ route('cart.add', $produk->id) }}" method="POST">
+                                @csrf
+                            <button type="submit" class="w-full mt-3 bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-plus text-[10px]"></i> Keranjang
+                            </button>
+                        </form>
+                        </div>
+                    </div>
+
+                </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+@endsection
