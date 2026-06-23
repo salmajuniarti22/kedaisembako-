@@ -6,79 +6,227 @@
     <title>Katalog Sembako - Warung Salma</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mencegah pergeseran tata letak saat memuat */
+        [class*="line-clamp-"] {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-2 {
+            -webkit-line-clamp: 2;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 p-4 md:p-8">
+<body class="bg-gray-50 p-6 md:p-12 text-gray-900 font-sans">
 
-    <div class="max-w-6xl mx-auto">
-        <div class="relative bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 rounded-3xl p-8 text-white mb-8 shadow-md overflow-hidden">
-            <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div>
-                    <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">✨ PROMO BULAN INI</span>
-                    <h1 class="text-3xl md:text-4xl font-black mt-3 mb-2">Belanja Sembako Hemat & Mudah</h1>
-                    <p class="text-emerald-50 text-sm max-w-xl">Penuhi kebutuhan dapur keluarga Anda dengan produk berkualitas langsung dari Warung Salma.</p>
+    <div class="max-w-7xl mx-auto">
+        <div class="relative bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 rounded-3xl p-8 md:p-12 text-white mb-12 shadow-lg overflow-hidden border border-green-700">
+            <div class="absolute top-0 right-0 -mt-12 -mr-12 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-0 left-1/3 -mb-20 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-8">
+                <div class="max-w-2xl text-center lg:text-left">
+                    <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest backdrop-blur-md mb-4 shadow-sm">
+                        ✨ Promo Spesial Bulan Ini
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight tracking-tight drop-shadow-sm">
+                        Belanja Sembako <br class="hidden md:block"><span class="text-yellow-300 underline decoration-wavy decoration-yellow-400">Hemat, Cepat & Higienis</span>
+                    </h1>
+                    <p class="text-emerald-50/90 text-sm md:text-base mb-8 font-medium max-w-lg leading-relaxed shadow-xs">
+                        Penuhi kebutuhan dapur keluarga Anda dengan produk segar berkualitas langsung dari Warung Salma. Gratis ongkir radius 3 KM!
+                    </p>
+                    <a href="#produk-section" class="inline-flex items-center gap-2.5 bg-yellow-400 hover:bg-yellow-500 text-emerald-950 font-extrabold px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+                        🚀 Belanja Sekarang <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
-                <div class="bg-black/30 backdrop-blur-md p-4 rounded-2xl text-center min-w-[180px] border border-white/10">
-                    <span class="text-xs text-green-400 font-bold uppercase tracking-wider">● Kedai Aktif</span>
-                    <p class="text-lg font-extrabold mt-1">MITRA RESMI</p>
+                
+                <div class="relative rounded-2xl overflow-hidden w-full max-w-[280px] h-40 shadow-xl group border border-white/20 flex-shrink-0 bg-gray-950 hover:border-white/40 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
+                         alt="Stok Sembako Toko" 
+                         class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700 opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent flex flex-col justify-end p-5">
+                        <div class="flex items-center gap-2 mb-1.5 border border-white/20 px-2.5 py-1 rounded-full w-max backdrop-blur-sm">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-sm"></span>
+                            <span class="text-[10px] font-bold text-green-300 uppercase tracking-widest">Mitra Terverifikasi</span>
+                        </div>
+                        <p class="text-xs text-gray-300 font-medium tracking-tight mb-1">Status Operasional Kedai</p>
+                        <p class="text-2xl font-black text-white tracking-wide drop-shadow-md">KEDAI AKTIF</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-8">
-            <h2 class="text-lg font-bold text-gray-800 mb-4">📦 Kategori Utama</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="px-4 py-2 bg-green-600 text-white text-xs font-bold rounded-xl shadow-xs">📦 Semua Produk</span>
-                <span class="px-4 py-2 bg-white text-gray-700 text-xs font-bold rounded-xl border border-gray-200">🍞 Beras & Roti</span>
-                <span class="px-4 py-2 bg-white text-gray-700 text-xs font-bold rounded-xl border border-gray-200">🍳 Minyak Goreng</span>
-                <span class="px-4 py-2 bg-white text-gray-700 text-xs font-bold rounded-xl border border-gray-200">🥚 Telur</span>
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl md:text-2xl font-extrabold text-gray-800 flex items-center gap-3">
+                    <span class="w-1.5 h-6 bg-green-600 rounded-full shadow-xs"></span> Jelajahi Kategori Utama
+                </h2>
             </div>
-        </div>
-
-        <h2 class="text-lg font-bold text-gray-800 mb-4">🛒 Produk Tersedia</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
             
-            <div class="bg-white rounded-2xl border border-gray-200 p-3 flex flex-col justify-between shadow-xs">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl mb-3">
-                <div>
-                    <span class="text-[10px] text-green-600 bg-green-50 px-2 py-0.5 rounded font-bold uppercase">Minyak</span>
-                    <h3 class="font-bold text-gray-800 text-xs mt-1 h-8 line-clamp-2">Minyak Goreng Filma 2 Liter</h3>
-                    <p class="text-sm font-extrabold text-gray-900 mt-2">Rp 34.000</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-5 rounded-2xl border border-gray-150 bg-white flex items-center gap-4 shadow-xs">
+                    <div class="w-14 h-14 rounded-full bg-green-50 text-green-600 flex items-center justify-center text-3xl shadow-inner">
+                        📦
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Semua Produk</h3>
+                        <p class="text-xs text-gray-500">Lihat semua stok</p>
+                    </div>
                 </div>
-                <button class="w-full mt-3 bg-green-600 text-white py-2 rounded-xl text-xs font-bold">+ Keranjang</button>
-            </div>
-
-            <div class="bg-white rounded-2xl border border-gray-200 p-3 flex flex-col justify-between shadow-xs">
-                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl mb-3">
-                <div>
-                    <span class="text-[10px] text-green-600 bg-green-50 px-2 py-0.5 rounded font-bold uppercase">Beras</span>
-                    <h3 class="font-bold text-gray-800 text-xs mt-1 h-8 line-clamp-2">Beras Pandan Wangi 5kg</h3>
-                    <p class="text-sm font-extrabold text-gray-900 mt-2">Rp 75.000</p>
+                <div class="p-5 rounded-2xl border border-gray-150 bg-white flex items-center gap-4 shadow-xs">
+                    <div class="w-14 h-14 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center text-3xl shadow-inner">
+                        🍳
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Minyak Goreng</h3>
+                        <p class="text-xs text-gray-500">Kebutuhan memasak</p>
+                    </div>
                 </div>
-                <button class="w-full mt-3 bg-green-600 text-white py-2 rounded-xl text-xs font-bold">+ Keranjang</button>
-            </div>
-
-            <div class="bg-white rounded-2xl border border-gray-200 p-3 flex flex-col justify-between shadow-xs">
-                <img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl mb-3">
-                <div>
-                    <span class="text-[10px] text-green-600 bg-green-50 px-2 py-0.5 rounded font-bold uppercase">Telur</span>
-                    <h3 class="font-bold text-gray-800 text-xs mt-1 h-8 line-clamp-2">Telur Ayam Negeri 1kg</h3>
-                    <p class="text-sm font-extrabold text-gray-900 mt-2">Rp 28.000</p>
+                <div class="p-5 rounded-2xl border border-gray-150 bg-white flex items-center gap-4 shadow-xs">
+                    <div class="w-14 h-14 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center text-3xl shadow-inner">
+                        🍞
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Beras & Roti</h3>
+                        <p class="text-xs text-gray-500">Makanan pokok</p>
+                    </div>
                 </div>
-                <button class="w-full mt-3 bg-green-600 text-white py-2 rounded-xl text-xs font-bold">+ Keranjang</button>
-            </div>
-
-            <div class="bg-white rounded-2xl border border-gray-200 p-3 flex flex-col justify-between shadow-xs">
-                <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl mb-3">
-                <div>
-                    <span class="text-[10px] text-green-600 bg-green-50 px-2 py-0.5 rounded font-bold uppercase">Mie</span>
-                    <h3 class="font-bold text-gray-800 text-xs mt-1 h-8 line-clamp-2">Indomie Goreng (Satu Dus)</h3>
-                    <p class="text-sm font-extrabold text-gray-900 mt-2">Rp 112.000</p>
+                <div class="p-5 rounded-2xl border border-gray-150 bg-white flex items-center gap-4 shadow-xs">
+                    <div class="w-14 h-14 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center text-3xl shadow-inner">
+                        🍬
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Gula & Bumbu</h3>
+                        <p class="text-xs text-gray-500">Penyedap rasa</p>
+                    </div>
                 </div>
-                <button class="w-full mt-3 bg-green-600 text-white py-2 rounded-xl text-xs font-bold">+ Keranjang</button>
             </div>
+        </div>
 
+        <div class="mb-12" id="produk-section">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl md:text-2xl font-extrabold text-gray-800 flex items-center gap-3">
+                    <span class="w-1.5 h-6 bg-green-600 rounded-full shadow-xs"></span> Semua Produk Tersedia
+                </h2>
+                <span class="text-xs font-semibold text-gray-400 bg-white px-3.5 py-1.5 rounded-full shadow-xs border border-gray-100">
+                    Sisa 4 Produk
+                </span>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl border border-gray-150/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-green-100 transition-all duration-300 flex flex-col group relative">
+                    <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 rounded-full flex items-center justify-center backdrop-blur-xs shadow-xs transition duration-200 border border-gray-100">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                    </button>
+                    <div class="bg-gray-50 aspect-square w-full flex items-center justify-center overflow-hidden relative border-b border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80" alt="Minyak" class="object-cover w-full h-full transform group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-xs">
+                            Potongan 15%
+                        </span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-[10px] text-green-600 bg-green-50 font-bold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-2 border border-green-100/50 shadow-inner">
+                            Minyak Goreng
+                        </span>
+                        <h3 class="font-bold text-gray-800 text-sm leading-snug mb-3 group-hover:text-green-600 transition duration-200 line-clamp-2 min-h-[40px]">
+                            Minyak Goreng Bimoli Klasik 2 Liter - Hemat
+                        </h3>
+                        <div class="mt-auto pt-3 border-t border-gray-100">
+                            <div class="flex flex-col mb-3">
+                                <span class="text-xs text-gray-400 line-through font-medium">Rp 45.000</span>
+                                <span class="text-base font-extrabold text-gray-900 tracking-tight">Rp 38.250</span>
+                            </div>
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-sm">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-150/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-green-100 transition-all duration-300 flex flex-col group relative">
+                    <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 rounded-full flex items-center justify-center backdrop-blur-xs shadow-xs transition duration-200 border border-gray-100">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                    </button>
+                    <div class="bg-gray-50 aspect-square w-full flex items-center justify-center overflow-hidden relative border-b border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=300&q=80" alt="Beras" class="object-cover w-full h-full transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-[10px] text-orange-600 bg-orange-50 font-bold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-2 border border-orange-100/50 shadow-inner">
+                            Beras
+                        </span>
+                        <h3 class="font-bold text-gray-800 text-sm leading-snug mb-3 group-hover:text-green-600 transition duration-200 line-clamp-2 min-h-[40px]">
+                            Beras Pandan Wangi Super Kualitas Premium 5kg
+                        </h3>
+                        <div class="mt-auto pt-3 border-t border-gray-100">
+                            <div class="flex flex-col mb-3">
+                                <span class="text-xs text-transparent select-none">space</span>
+                                <span class="text-base font-extrabold text-gray-900 tracking-tight">Rp 75.000</span>
+                            </div>
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-sm">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-150/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-green-100 transition-all duration-300 flex flex-col group relative">
+                    <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 rounded-full flex items-center justify-center backdrop-blur-xs shadow-xs transition duration-200 border border-gray-100">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                    </button>
+                    <div class="bg-gray-50 aspect-square w-full flex items-center justify-center overflow-hidden relative border-b border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=300&q=80" alt="Telur" class="object-cover w-full h-full transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-[10px] text-blue-600 bg-blue-50 font-bold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-2 border border-blue-100/50 shadow-inner">
+                            Telur & Segar
+                        </span>
+                        <h3 class="font-bold text-gray-800 text-sm leading-snug mb-3 group-hover:text-green-600 transition duration-200 line-clamp-2 min-h-[40px]">
+                            Telur Ayam Negeri Pilihan Segar 1kg (Isi 16)
+                        </h3>
+                        <div class="mt-auto pt-3 border-t border-gray-100">
+                            <div class="flex flex-col mb-3">
+                                <span class="text-xs text-transparent select-none">space</span>
+                                <span class="text-base font-extrabold text-gray-900 tracking-tight">Rp 28.000</span>
+                            </div>
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-sm">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-150/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-green-100 transition-all duration-300 flex flex-col group relative">
+                    <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 rounded-full flex items-center justify-center backdrop-blur-xs shadow-xs transition duration-200 border border-gray-100">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                    </button>
+                    <div class="bg-gray-50 aspect-square w-full flex items-center justify-center overflow-hidden relative border-b border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=300&q=80" alt="Instan" class="object-cover w-full h-full transform group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-xs">
+                            Potongan 5%
+                        </span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-[10px] text-pink-600 bg-pink-50 font-bold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-2 border border-pink-100/50 shadow-inner">
+                            Mie Instan
+                        </span>
+                        <h3 class="font-bold text-gray-800 text-sm leading-snug mb-3 group-hover:text-green-600 transition duration-200 line-clamp-2 min-h-[40px]">
+                            Indomie Goreng Spesial (Karton isi 40 bks)
+                        </h3>
+                        <div class="mt-auto pt-3 border-t border-gray-100">
+                            <div class="flex flex-col mb-3">
+                                <span class="text-xs text-gray-400 line-through font-medium">Rp 120.000</span>
+                                <span class="text-base font-extrabold text-gray-900 tracking-tight">Rp 114.000</span>
+                            </div>
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-sm">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-
 </body>
 </html>
