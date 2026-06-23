@@ -1,106 +1,173 @@
 @extends('layouts.app')
 
-@section('title', 'Katalog Sembako')
+@section('title', 'Katalog Sembako - Warung Salma')
 
 @section('content')
-    <!-- Banner Utama -->
-    <div class="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white mb-10 shadow-xs flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-            <span class="bg-green-700/50 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Program</span>
-            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 mb-2">Belanja Sembako Hemat & Mudah</h1>
-            <p class="text-green-100 max-w-xl">Penuhi kebutuhan dapur keluarga Anda dengan produk berkualitas langsung dari warung Salma.</p>
-        </div>
-        
-        <!-- Status Mitra -->
-        <div class="relative rounded-2xl overflow-hidden min-w-[240px] h-32 shadow-md group border border-white/20 flex-shrink-0">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
-                 alt="Stok Sembako Toko" 
-                 class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 backdrop-blur-[1px] flex flex-col justify-center items-center text-center p-4">
-                <span class="bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest mb-1 shadow-sm">
-                    <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> Mitra
+    <div class="relative bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 rounded-3xl p-8 md:p-12 text-white mb-12 shadow-lg overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-12 -mr-12 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-0 left-1/3 -mb-20 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-8">
+            <div class="max-w-2xl text-center lg:text-left">
+                <span class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest backdrop-blur-md">
+                    ✨ Promo Spesial Bulan Ini
                 </span>
-                <p class="text-xs uppercase text-gray-300 font-medium tracking-wide">Status Toko</p>
-                <p class="text-xl font-black text-white tracking-wide drop-shadow-md">KEDAI AKTIF</p>
+                <h1 class="text-3xl md:text-5xl font-black mt-4 mb-4 leading-tight tracking-tight">
+                    Belanja Sembako <br class="hidden md:block"><span class="text-yellow-350 underline decoration-wavy decoration-yellow-400">Hemat, Cepat & Higienis</span>
+                </h1>
+                <p class="text-emerald-50/90 text-sm md:text-base mb-6 font-medium max-w-lg leading-relaxed">
+                    Penuhi kebutuhan dapur keluarga Anda dengan produk segar berkualitas langsung dari Warung Salma. Gratis ongkir radius 3 KM!
+                </p>
+                <a href="#produk-section" class="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-emerald-950 font-bold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-350 transform hover:-translate-y-0.5 text-sm">
+                    🚀 Belanja Sekarang <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+            
+            <div class="relative rounded-2xl overflow-hidden w-full max-w-[280px] h-40 shadow-xl group border border-white/20 flex-shrink-0 bg-gray-900">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
+                     alt="Stok Sembako Toko" 
+                     class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700 opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/60 to-transparent flex flex-col justify-end p-5">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span class="text-[11px] font-bold text-green-400 uppercase tracking-widest">Mitra Terverifikasi</span>
+                    </div>
+                    <p class="text-xs text-gray-300 font-medium">Status Operasional</p>
+                    <p class="text-2xl font-black text-white tracking-wide drop-shadow-sm">KEDAI AKTIF</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Kategori Utama -->
-    <div class="mb-8">
-        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span class="w-1 h-6 bg-green-600 rounded-full"></span> Kategori Utama
-        </h2>
-        <div class="flex flex-wrap gap-3">
+    <div class="mb-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl md:text-2xl font-extrabold text-gray-800 flex items-center gap-2.5">
+                <span class="w-1.5 h-6 bg-green-600 rounded-full"></span> Jelajahi Kategori
+            </h2>
+        </div>
+        
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4">
             <a href="{{ url('/') }}" 
-               class="px-5 py-3 rounded-xl border text-center shadow-xs font-medium text-sm transition cursor-pointer 
-               {{ !$kategoriTerpilih ? 'bg-green-600 text-white border-green-600' : 'bg-white text-gray-700 border-gray-200 hover:border-green-500 hover:text-green-600' }}">
-                📦 Semua Produk
+               class="flex flex-col items-center p-4 rounded-2xl border text-center transition-all duration-300 group
+               {{ !$kategoriTerpilih ? 'bg-green-50 border-green-500 shadow-sm ring-1 ring-green-500' : 'bg-white border-gray-100 hover:border-green-300 hover:shadow-sm' }}">
+                <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-3 shadow-xs group-hover:scale-110 transition duration-300 {{ !$kategoriTerpilih ? 'bg-green-600 text-white' : 'bg-gray-50 text-gray-700' }}">
+                    📦
+                </div>
+                <span class="text-xs font-bold text-gray-700 group-hover:text-green-600 transition">Semua</span>
             </a>
 
             @foreach($daftarKategori as $kat)
                 @php
                     $icon = '🛒';
-                    if (str_contains(strtolower($kat), 'beras') || str_contains(strtolower($kat), 'roti')) $icon = '🍞';
-                    elseif (str_contains(strtolower($kat), 'minyak')) $icon = '🍳';
-                    elseif (str_contains(strtolower($kat), 'gula')) $icon = '🍬';
-                    elseif (str_contains(strtolower($kat), 'mie') || str_contains(strtolower($kat), 'kopi')) $icon = '☕';
-                    elseif (str_contains(strtolower($kat), 'telur')) $icon = '🥚';
+                    $bgIcon = 'bg-amber-50';
+                    if (str_contains(strtolower($kat), 'beras') || str_contains(strtolower($kat), 'roti')) { $icon = '🍞'; $bgIcon = 'bg-amber-50'; }
+                    elseif (str_contains(strtolower($kat), 'minyak')) { $icon = '🍳'; $bgIcon = 'bg-yellow-50'; }
+                    elseif (str_contains(strtolower($kat), 'gula')) { $icon = '🍬'; $bgIcon = 'bg-pink-50'; }
+                    elseif (str_contains(strtolower($kat), 'mie') || str_contains(strtolower($kat), 'kopi')) { $icon = '☕'; $bgIcon = 'bg-orange-50'; }
+                    elseif (str_contains(strtolower($kat), 'telur')) { $icon = '🥚'; $bgIcon = 'bg-blue-50'; }
                 @endphp
                 
                 <a href="{{ url('/?kategori=' . urlencode($kat)) }}" 
-                   class="px-5 py-3 rounded-xl border text-center shadow-xs font-medium text-sm transition cursor-pointer 
-                   {{ $kategoriTerpilih === $kat ? 'bg-green-600 text-white border-green-600' : 'bg-white text-gray-700 border-gray-200 hover:border-green-500 hover:text-green-600' }}">
-                    {{ $icon }} {{ $kat }}
+                   class="flex flex-col items-center p-4 rounded-2xl border text-center transition-all duration-300 group
+                   {{ $kategoriTerpilih === $kat ? 'bg-green-50 border-green-500 shadow-sm ring-1 ring-green-500' : 'bg-white border-gray-100 hover:border-green-300 hover:shadow-sm' }}">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-3 shadow-xs group-hover:scale-110 transition duration-300 {{ $kategoriTerpilih === $kat ? 'bg-green-600 text-white' : $bgIcon }}">
+                        {{ $icon }}
+                    </div>
+                    <span class="text-xs font-bold text-gray-700 group-hover:text-green-600 transition truncate w-full px-1">{{ $kat }}</span>
                 </a>
             @endforeach
         </div>
     </div>
 
-    <!-- Daftar Produk -->
-    <div class="mb-6" id="produk-section">
-        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span class="w-1 h-6 bg-green-600 rounded-full"></span> 
-            {{ $kategoriTerpilih ? 'Menampilkan Kategori: ' . $kategoriTerpilih : 'Produk Tersedia' }}
-        </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5 flex items-center justify-between shadow-xs">
+            <div>
+                <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">Flash Sale</span>
+                <h3 class="font-bold text-gray-800 text-base mt-2">Minyak Goreng Diskon Murah</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Dapatkan potongan hingga Rp 5.000 perkilo.</p>
+            </div>
+            <span class="text-4xl">🔥</span>
+        </div>
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex items-center justify-between shadow-xs">
+            <div>
+                <span class="bg-blue-200 text-blue-900 text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">Layanan</span>
+                <h3 class="font-bold text-gray-800 text-base mt-2">Pesan Antar COD</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Bayar di tempat saat barang sampai di rumah.</p>
+            </div>
+            <span class="text-4xl">🛵</span>
+        </div>
+    </div>
+
+    <div class="mb-12" id="produk-section">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl md:text-2xl font-extrabold text-gray-800 flex items-center gap-2.5">
+                <span class="w-1.5 h-6 bg-green-600 rounded-full"></span> 
+                {{ $kategoriTerpilih ? 'Kategori: ' . $kategoriTerpilih : 'Semua Produk Tersedia' }}
+            </h2>
+            <span class="text-xs font-semibold text-gray-400 bg-gray-100 px-3 py-1.5 rounded-lg">
+                {{ $produks->count() }} Produk
+            </span>
+        </div>
         
         @if($produks->isEmpty())
-            <div class="bg-white rounded-2xl border border-gray-200 p-12 text-center text-gray-500 shadow-xs">
-                <i class="fa-solid fa-box-open text-4xl mb-3 text-gray-300"></i>
-                <p class="font-medium">Maaf, produk untuk kategori ini belum tersedia.</p>
+            <div class="bg-white rounded-2xl border border-gray-100 p-16 text-center text-gray-500 shadow-xs max-w-md mx-auto">
+                <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
+                    <i class="fa-solid fa-box-open text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg mb-1">Produk Kosong</h3>
+                <p class="text-sm text-gray-400">Maaf, produk untuk kategori ini belum tersedia sementara waktu.</p>
             </div>
         @else
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                 @foreach($produks as $produk)
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition duration-300 flex flex-col">
+                <div class="bg-white rounded-2xl border border-gray-150/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-green-200 transition-all duration-350 flex flex-col group relative">
                     
-                    <div class="bg-gray-100 h-48 w-full flex items-center justify-center overflow-hidden relative">
-                        <img src="{{ $produk->gambar }}" alt="{{ $produk->nama_produk }}" class="object-cover w-full h-full transform hover:scale-105 transition duration-500">
+                    <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 rounded-full flex items-center justify-center backdrop-blur-xs shadow-xs transition duration-200">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                    </button>
+
+                    <div class="bg-gray-50 aspect-square w-full flex items-center justify-center overflow-hidden relative border-b border-gray-50">
+                        <img src="{{ $produk->gambar }}" alt="{{ $produk->nama_produk }}" class="object-cover w-full h-full transform group-hover:scale-105 transition duration-500">
+                        
                         @if($produk->harga_diskon)
-                            <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Promo</span>
+                            @php
+                                $persenDiskon = round((($produk->harga - $produk->harga_diskon) / $produk->harga) * 100);
+                            @php
+                            <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-xs">
+                                Potongan {{ $persenDiskon }}%
+                            </span>
                         @endif
                     </div>
 
                     <div class="p-4 flex flex-col flex-grow">
-                        <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">{{ $produk->kategori }}</span>
-                        <h3 class="font-bold text-gray-800 text-sm mt-1 line-clamp-2 h-10">{{ $produk->nama_produk }}</h3>
+                        <span class="text-[10px] text-green-600 bg-green-50 font-bold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-2">
+                            {{ $produk->kategori }}
+                        </span>
                         
-                        <div class="mt-auto pt-3">
-                            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1">
+                        <h3 class="font-bold text-gray-800 text-sm leading-snug line-clamp-2 mb-2 group-hover:text-green-600 transition duration-200 min-h-[40px]">
+                            {{ $produk->nama_produk }}
+                        </h3>
+                        
+                        <div class="flex items-center gap-1.5 mb-3 text-[11px] text-gray-400">
+                            <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i> Stok Tersedia
+                        </div>
+
+                        <div class="mt-auto pt-2 border-t border-gray-50">
+                            <div class="flex flex-col mb-3">
                                 @if($produk->harga_diskon)
-                                    <span class="text-base font-extrabold text-green-600">Rp {{ number_format($produk->harga_diskon, 0, ',', '.') }}</span>
-                                    <span class="text-xs text-gray-400 line-through">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
+                                    <span class="text-xs text-gray-400 line-through font-medium">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
+                                    <span class="text-base font-extrabold text-gray-900">Rp {{ number_format($produk->harga_diskon, 0, ',', '.') }}</span>
                                 @else
-                                    <span class="text-base font-extrabold text-green-600">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
+                                    <span class="text-xs text-transparent select-none font-medium">Space</span> <span class="text-base font-extrabold text-gray-900">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
                                 @endif
                             </div>
                             
                             <form action="{{ route('cart.add', $produk->id) }}" method="POST">
                                 @csrf
-                            <button type="submit" class="w-full mt-3 bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-plus text-[10px]"></i> Keranjang
-                            </button>
-                        </form>
+                                <button type="submit" class="w-full bg-white hover:bg-green-600 border border-green-600 text-green-600 hover:text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-2xs">
+                                    <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                                </button>
+                            </form>
                         </div>
                     </div>
 
